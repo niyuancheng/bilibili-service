@@ -19,7 +19,7 @@ https://www.bilibili.com/video/BV1Ud4y1V79P?t=0.7
 ## 数据
 1. B站获取到的弹幕池数据是xml类型的文本：
 ![image](https://user-images.githubusercontent.com/69229785/218742618-791d200b-8642-4ff6-91d6-9f939cb56242.png)
-2. 视频流数据不是单纯的mp4文件，引文B站使用的是MPEG-DASH流媒体协议，因此获取的视频数据是json文本格式，其中的组织形式类似于manifest文件，描述的类似于每一个视频和音频分片的数据，例如分辨率，地址，大小，码率等；后缀名为m4s；如下图：
+2. 视频流数据不是单纯的mp4文件，因为B站使用的是MPEG-DASH流媒体协议，因此获取的视频数据是json文本格式，其中的组织形式类似于manifest文件，描述的类似于每一个视频和音频分片的数据，例如分辨率，地址，大小，码率等；后缀名为m4s；如下图：
 ![image](https://user-images.githubusercontent.com/69229785/218743610-0c92ec8d-b9b2-4dc0-9ce6-bec8f037bc25.png)
 
 ## 弹幕数据解析
