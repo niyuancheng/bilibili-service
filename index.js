@@ -33,7 +33,7 @@ app.get("/getVideoData", async (req, res) => {
   let value = await axios.get(`https://api.bilibili.com/x/player/pagelist?bvid=${bvid}`);
   cvid = value.data.data[0].cid;
  // 2. 根据bvid,cvid请求avid
-  let value2 = await axios.get(`https://api.bilibili.com/x/web-interface/view?cid=&${cvid}&bvid=${bvid}`)
+  let value2 = await axios.get(`https://api.bilibili.com/x/web-interface/view?cid=${cvid}&bvid=${bvid}`)
   avid = value2.data.data.aid;
   // 3. 根据cvid请求弹幕池文件
   let value3 = await axios.get(`https://api.bilibili.com/x/v1/dm/list.so?oid=${cvid}`)
