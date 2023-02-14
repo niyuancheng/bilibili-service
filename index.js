@@ -2,8 +2,13 @@ var app = require("express")();
 var http = require("http").createServer(app);
 var io = require("socket.io")(http);
 var cors = require("cors");
-var { parseBilibiliXML } = require("./parse");
+var { parseBilibiliXML } = require("./parseDanmaku");
+const parseDash = require("./parseDash");
 const axios = require("axios").default;
+const fs = require("fs")
+
+
+
 
 let sockets = null;
 app.use(cors());
@@ -15,12 +20,10 @@ const instance = axios.create({
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.46",
     "Accept":
       "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    'referer': 'https://www.bilibili.com/'
   },
 });
 
-app.get("/", (req, res) => {
-  res.send("<h1>Hello world</h1>");
-});
 
 app.get("/getVideoData", async (req, res) => {
   let bvid = req.query.bvid;
@@ -30,21 +33,22 @@ app.get("/getVideoData", async (req, res) => {
   let video = null;
   console.log(bvid);
   // 1.根据bvid获取avid
-  let value = await axios.get(`https://api.bilibili.com/x/player/pagelist?bvid=${bvid}`);
+  let value = await instance.get(`https://api.bilibili.com/x/player/pagelist?bvid=${bvid}`);
   cvid = value.data.data[0].cid;
  // 2. 根据bvid,cvid请求avid
-  let value2 = await axios.get(`https://api.bilibili.com/x/web-interface/view?cid=${cvid}&bvid=${bvid}`)
+  let value2 = await instance.get(`https://api.bilibili.com/x/web-interface/view?cid=${cvid}&bvid=${bvid}`)
   avid = value2.data.data.aid;
   // 3. 根据cvid请求弹幕池文件
-  let value3 = await axios.get(`https://api.bilibili.com/x/v1/dm/list.so?oid=${cvid}`)
+  let value3 = await instance.get(`https://api.bilibili.com/x/v1/dm/list.so?oid=${cvid}`)
   danmaku = parseBilibiliXML(value3.data);
 
   // 4.请求视频流文件
-  let value4 = await axios.get(`https://api.bilibili.com/x/player/playurl?fnval=80&avid=${avid}&cid=${cvid}`)
-  video = value4.data.data.dash
+  let value4 = await instance.get(`https://api.bilibili.com/x/player/playurl?fnval=80&avid=${avid}&cid=${cvid}`)
+  dash = value4.data.data.dash
   // 解析弹幕xml文件
-  res.json({
-    danmaku,video
+
+  parseDash(dash, instance).then(msg => {
+    res.send("保存视频成功!!!")
   })
 });
 
