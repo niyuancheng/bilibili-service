@@ -38,3 +38,9 @@ https://www.bilibili.com/video/BV1Ud4y1V79P?t=0.7
 - 参数6（0）：弹幕池，0普通池，1字幕池，2特殊池 【目前特殊池为高级弹幕专用】
 - 参数7（91b2bf5a）：发送者的ID，用于“屏蔽此弹幕的发送者”功能
 - 参数8（1231205872512908544）：弹幕在弹幕数据库中rowID 用于“历史弹幕”功能。
+
+## B站API接口
+1. 获取视频aid: https://api.bilibili.com/x/player/pagelist?bvid=(bvid)
+2. 获取视频cid: https://api.bilibili.com/x/web-interface/view?cid=${cvid}&bvid=${bvid}
+3. 获取对应视频的弹幕池文件： https://api.bilibili.com/x/v1/dm/list.so?oid=(cvid)
+4. 获取视频流文件（多种清晰度）：https://api.bilibili.com/x/player/playurl?fnval=80&avid=${avid}&cid=${cvid}
