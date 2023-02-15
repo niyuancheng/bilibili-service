@@ -6,6 +6,7 @@
 2. 找到index.js文件，运行```node index.js```
 3. 到B站上找到你喜欢视频的bvid，接着在浏览器访问本地服务```https://127.0.0.1?getVideoData=(bvid)```
 4. 接着你就会看到对应bvid的视频就已经完成下载并且在浏览器端播放了：
+__PS，确保你本地已经安装好了python和ffmpeg，具体安装方式可自行google__
 ### 这是原视频：
 ![image](https://user-images.githubusercontent.com/69229785/218935232-dc6201a2-97cd-437e-b2f2-c4e4af9db63c.png)
 ### 本地启用服务后，输入该视频bvid
