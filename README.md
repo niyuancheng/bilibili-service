@@ -5,6 +5,16 @@
 1. 首先将项目clone到本地，运行```pnpm i```命令初始化。
 2. 找到index.js文件，运行```node index.js```
 3. 到B站上找到你喜欢视频的bvid，接着在浏览器访问本地服务```https://127.0.0.1?getVideoData=(bvid)```
+4. 接着你就会看到对应bvid的视频就已经完成下载并且在浏览器端播放了：
+### 这是原视频：
+![image](https://user-images.githubusercontent.com/69229785/218935232-dc6201a2-97cd-437e-b2f2-c4e4af9db63c.png)
+### 本地启用服务后，输入该视频bvid
+![image](https://user-images.githubusercontent.com/69229785/218935373-6f210436-eba7-468f-b027-adcb149da588.png)
+### 接着等待片刻后，我们就可以看到视频已经加载成功了：
+![image](https://user-images.githubusercontent.com/69229785/218936127-61830ff0-507b-4290-967d-864d1c65de0e.png)
+### 对应后台的文件已经下载到本地：
+![image](https://user-images.githubusercontent.com/69229785/218936185-38c5215f-f4fa-4580-8eb3-36420a90a090.png)
+
 
 
 ## 视频bvid获取步骤
