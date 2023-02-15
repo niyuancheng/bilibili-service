@@ -29,14 +29,14 @@ def getMediaData(url,bvid):
     subprocess.call(generateFFMPEG(bvid),shell=True)
 
     '''选择是否删除原mp3、mp4文件'''
-    # flag = True
-    # if flag:
-    #     try:
-    #         os.remove('./public/' + bvid + '.mp4')
-    #         os.remove('./public/' + bvid + '.mp3')
-    #         print('删除成功')
-    #     except:
-    #         print('未删除！')
+    flag = True
+    if flag:
+        try:
+            os.remove('./public/' + bvid + '.mp4')
+            os.remove('./public/' + bvid + '.mp3')
+            print('删除成功')
+        except:
+            print('未删除！')
  
 def main():
     videoUrl = sys.argv[1]

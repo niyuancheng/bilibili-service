@@ -8,7 +8,7 @@ const parseDash = require("./parseDash");
 const axios = require("axios").default;
 
 let sockets = null;
-
+let bvids = []
 app.use(cors());
 app.use('/static',express.static("public"))
 
@@ -27,6 +27,9 @@ const instance = axios.create({
 app.get("/getVideoData", async (req, res) => {
   console.log("请求媒体数据")
   let bvid = req.query.bvid;
+  if(bvids.includes(bvid)) {
+    return res.redirect(`./static/${bvid}_new.mp4`)
+  }
   let avid = null;
   let cvid = null;
   let danmaku = null;
