@@ -1,24 +1,35 @@
 import requests
 import sys
+import time
 headers = {
     'Referer': 'https://www.bilibili.com',  
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
 }
 
-def getMediaData(url):
-    response = requests.get(url, headers=headers).content
-    print(response)
-    with open("./test.mp4",mode="wb") as f:
-        f.write(response)
+def saveFile(data, name):
+    with open("./public/" + name, mode="wb") as f:
+        f.write(data)
 
+
+# 获取视频和音频的二进制流数据
+def getMediaData(url,bvid):
+    videoResponse = requests.get(url.get("video"), headers=headers).content
+    audioResponse = requests.get(url.get("audio"), headers=headers).content
+    saveFile(videoResponse,bvid + ".mp4")
+    saveFile(audioResponse,bvid + ".mp3")
  
 def main():
-    url = sys.argv[1]
-    print(url)
-    getMediaData(url)
+    videoUrl = sys.argv[1]
+    audioUrl = sys.argv[2]
+    bvid = sys.argv[3]
+    getMediaData({
+        "video": videoUrl,
+        "audio": audioUrl
+    },bvid)
 
-# sys模块向输出缓冲区输出数据，通知nodejs线程数据处理完成
+    print("success")
+# sys模块情况输出缓冲区
     sys.stdout.flush()
- 
+
 if __name__ == '__main__':
     main()

@@ -1,17 +1,16 @@
-var app = require("express")();
+var express = require("express")
+var app = express()
 var http = require("http").createServer(app);
 var io = require("socket.io")(http);
 var cors = require("cors");
 var { parseBilibiliXML } = require("./parseDanmaku");
 const parseDash = require("./parseDash");
 const axios = require("axios").default;
-const fs = require("fs")
-
-
-
 
 let sockets = null;
+
 app.use(cors());
+app.use('/static',express.static("public"))
 
 const instance = axios.create({
   timeout: 1000,
@@ -26,12 +25,12 @@ const instance = axios.create({
 
 
 app.get("/getVideoData", async (req, res) => {
+  console.log("请求媒体数据")
   let bvid = req.query.bvid;
   let avid = null;
   let cvid = null;
   let danmaku = null;
   let video = null;
-  console.log(bvid);
   // 1.根据bvid获取avid
   let value = await instance.get(`https://api.bilibili.com/x/player/pagelist?bvid=${bvid}`);
   cvid = value.data.data[0].cid;
@@ -47,8 +46,10 @@ app.get("/getVideoData", async (req, res) => {
   dash = value4.data.data.dash
   // 解析弹幕xml文件
 
-  parseDash(dash, instance).then(msg => {
-    res.send("保存视频成功!!!")
+  parseDash(dash,bvid).then(paths => {
+    console.log(paths)
+    // 重定向
+    res.redirect(`/static/${bvid}.mp4`)
   })
 });
 

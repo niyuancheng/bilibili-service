@@ -1,15 +1,14 @@
 const { spawn } = require('child_process');
-module.exports = function parseDash(obj) {
+module.exports = function parseDash(obj,bvid) {
    
     return new Promise((res,rej) => {
-        let video = obj.video;
-        let url = video[0].base_url;
-        console.log(url)
-        let py = spawn("python",['./spider.py', url])
+        let videoUrl = obj.video[0].base_url;
+        let audioUrl = obj.audio[0].base_url;
+        let py = spawn("python", ['./spider.py', videoUrl, audioUrl, bvid])
 
-        py.stdout.on("data",(value) => {
-            console.log(value);
-            res();
+        py.stdout.on("data", (path) => {
+            res(path);
+            console.log("视频保存成功!!!")
         })
     })
 
