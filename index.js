@@ -49,7 +49,7 @@ app.get("/getVideoData", async (req, res) => {
   parseDash(dash,bvid).then(paths => {
     console.log(paths)
     // 重定向
-    res.redirect(`/static/${bvid}.mp4`)
+    res.redirect(`/static/${bvid}_new.mp4`)
   })
 });
 
