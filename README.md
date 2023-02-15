@@ -11,7 +11,7 @@
 ### 本地启用服务后，输入该视频bvid
 ![image](https://user-images.githubusercontent.com/69229785/218935373-6f210436-eba7-468f-b027-adcb149da588.png)
 ### 接着等待片刻后，我们就可以看到视频已经加载成功了：
-![image](https://user-images.githubusercontent.com/69229785/218936127-61830ff0-507b-4290-967d-864d1c65de0e.png)
+![image](https://user-images.githubusercontent.com/69229785/218936313-484377b6-b01a-4400-8b3b-ed1f13476902.png)
 ### 对应后台的文件已经下载到本地：
 ![image](https://user-images.githubusercontent.com/69229785/218936185-38c5215f-f4fa-4580-8eb3-36420a90a090.png)
 
