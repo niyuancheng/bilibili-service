@@ -12,8 +12,8 @@ module.exports = (req, res) => {
 //       data.push(danmaku[index]);
 //     }
 //   }
-  res.json({
+  res.json(JSON.stringify({
     name:"json",
     age:"10"
-  });
+  }));
 };
