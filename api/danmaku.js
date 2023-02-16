@@ -1,11 +1,20 @@
 //TODO 专门为部署到vercel服务器上写的接口
 
-var { XML2DanmakuData } = require("../parseDanmaku");
+var { parseBilibiliXML } = require("../parseDanmaku");
 
+var {str} = require("../danmakuStr")
 module.exports = (req, res) => {
   let time = req.query.time;
 
-  let danmaku = XML2DanmakuData("./assets/bilibili-danmaku.xml");
+  let res = parseBilibiliXML(data)
+
+  function cmp(obj1,obj2) {
+      return obj1.time - obj2.time
+  }
+
+  res.sort(cmp);
+
+  let danmaku = res;
 
   let data = [];
   for (let index in danmaku) {
