@@ -6,7 +6,7 @@ var {str} = require("../danmakuStr")
 module.exports = (req, res) => {
   let time = req.query.time;
 
-  let res = parseBilibiliXML(data)
+  let res = parseBilibiliXML(str)
 
   function cmp(obj1,obj2) {
       return obj1.time - obj2.time
