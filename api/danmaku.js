@@ -6,15 +6,13 @@ var {str} = require("../danmakuStr")
 module.exports = (req, res) => {
   let time = req.query.time;
 
-  let res = parseBilibiliXML(str)
+  let danamku = parseBilibiliXML(str)
 
   function cmp(obj1,obj2) {
       return obj1.time - obj2.time
   }
 
   res.sort(cmp);
-
-  let danmaku = res;
 
   let data = [];
   for (let index in danmaku) {
