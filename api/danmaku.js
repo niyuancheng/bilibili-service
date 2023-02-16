@@ -1,5 +1,5 @@
 //TODO 专门为部署到vercel服务器上写的接口
-var { XML2DanmakuData } = require("../parseDanmaku");
+// var { XML2DanmakuData } = require("../parseDanmaku");
 
 module.exports = (req, res) => {
 //   let time = req.query.time;
