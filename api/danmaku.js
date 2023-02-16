@@ -1,11 +1,5 @@
 //TODO 专门为部署到vercel服务器上写的接口
-var express = require("express");
-var app = express();
-var cors = require("cors");
 var { XML2DanmakuData } = require("./parseDanmaku");
-
-app.use(cors());
-app.use("/static", express.static("public"));
 
 module.exports = async (req, res) => {
     let time = req.query.time;
