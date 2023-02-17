@@ -1,6 +1,9 @@
 # bilibili-service
 提供B站的弹幕和视频流服务，只需输入B站视频的bvid即可获取对应视频的视频流和弹幕池信息
 
+## 更新！！
+公网体验地址：http://47.101.212.31/getVideoData?bvid=(bvid)
+__提供最高画质原版视频同时支持免费下载！！！__
 ## 使用方式
 1. 首先将项目clone到本地，运行```pnpm i```命令初始化。
 2. 找到index.js文件，运行```node index.js```
